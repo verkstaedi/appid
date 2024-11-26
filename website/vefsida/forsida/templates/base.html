@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blue Palette Template</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: #1e3a8a; /* Dark blue */
+            color: rgb(7, 190, 111);
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 20px;
+            background-color: #e0f2fe; /* Light blue */
+            color: #1e293b; /* Navy blue */
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3a8a; /* Dark blue */
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        /* Additional Styling */
+        h1, h2 {
+            margin: 0;
+            color: #ff43e9; /* Medium blue */
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ff0bd2; /* Grayish blue */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>About This Page</h2>
+        <p>
+            Property of Ísar Örn Einarsson
+        </p>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Website. Built with Django.</p>
+    </footer>
+</body>
+{% endblock %}
+</html>
