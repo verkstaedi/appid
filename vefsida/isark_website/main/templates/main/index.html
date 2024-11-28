@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isark.is - Einföldun fyrir verkstæði</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="nav-link" href="{% url 'index' %}">isark.is</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Innskráning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Nýskráning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Hafa Samband</a> <!-- Add Contact Page -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+        <div class="container text-center">
+            <h1>isark.is</h1>
+            <p>Ein leið til að leysa fyrirspurnir og verkstæðistímana á einfaldan hátt.</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>Um Fyrirtækið</h2>
+                    <p>isark.is er nafnið á fyrirtækinu sem er hannað til að einfalda samskipti milli verkstæða og viðskiptavina. Við leysum þann vanda að verkstæði þurfa að eyða tíma í að svara símanum með því að bjóða upp á skilvirkt kerfi til fyrirspurna, tilboða og verkstæðistíma.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/500x300" alt="Einföld verkstæðislausn" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2>Hafðu Samband</h2>
+            <p>Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
+            <form class="mt-4">
+                <div class="row mb-3">
+                    <!-- Velja bílaframleiðanda -->
+                    <div class="col-md-4">
+                        <label for="carManufacturer" class="form-label">Veldu framleiðanda</label>
+                        <select id="carManufacturer" class="form-select" required>
+                            <option value="" disabled selected>Veldu framleiðanda</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="volkswagen">Volkswagen</option>
+                            <option value="bmw">BMW</option>
+                            <option value="audi">Audi</option>
+                            <option value="hyundai">Hyundai</option>
+                            <option value="mercedes">Mercedes-Benz</option>
+                            <option value="nissan">Nissan</option>
+                            <option value="ford">Ford</option>
+                            <option value="honda">Honda</option>
+                            <option value="chevrolet">Chevrolet</option>
+                            <option value="kia">Kia</option>
+                            <option value="mazda">Mazda</option>
+                            <option value="subaru">Subaru</option>
+                            <option value="tesla">Tesla</option>
+                        </select>
+                    </div>
+
+                    <!-- Velja tryggingarfyrirtæki -->
+                    <div class="col-md-4">
+                        <label for="insuranceCompany" class="form-label">Veldu tryggingarfyrirtæki</label>
+                        <select id="insuranceCompany" class="form-select" required>
+                            <option value="" disabled selected>Veldu tryggingarfyrirtæki</option>
+                            <option value="sjova">Sjóvá</option>
+                            <option value="vis">VÍS</option>
+                            <option value="tm">TM</option>
+                            <option value="vordur">Vörður</option>
+                            <option value="alfasigur">Alfasigur</option>
+                        </select>
+                    </div>
+
+                    <!-- Velja lánsbílamöguleika -->
+                    <div class="col-md-4">
+                        <label for="loanCar" class="form-label">Þarftu lánsbíl?</label>
+                        <select id="loanCar" class="form-select" required>
+                            <option value="" disabled selected>Veldu möguleika</option>
+                            <option value="yes">Já</option>
+                            <option value="no">Nei</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sýna meira ef allar upplýsingar eru valdar -->
+                <div id="extraInfo" class="mt-4" style="display: none;">
+                    <h4>Frekari upplýsingar</h4>
+                    <p>Þú valdir framleiðanda: <span id="selectedManufacturer"></span></p>
+                    <p>Þú valdir tryggingarfyrirtæki: <span id="selectedInsurance"></span></p>
+                    <p>Þú þarft lánsbíl: <span id="selectedLoanCar"></span></p>
+                </div>
+
+                <!-- Submit hnappur -->
+                <button type="submit" class="btn btn-primary mt-3">Senda</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">© 2024 isark.is - Öll réttindi áskilin.</p>
+        <a href="hafa-samband.html" class="text-white text-decoration-underline">Hafa samband</a>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const carManufacturer = document.getElementById('carManufacturer');
+        const insuranceCompany = document.getElementById('insuranceCompany');
+        const loanCar = document.getElementById('loanCar');
+        const extraInfo = document.getElementById('extraInfo');
+
+        const selectedManufacturer = document.getElementById('selectedManufacturer');
+        const selectedInsurance = document.getElementById('selectedInsurance');
+        const selectedLoanCar = document.getElementById('selectedLoanCar');
+
+        [carManufacturer, insuranceCompany, loanCar].forEach(select => {
+            select.addEventListener('change', () => {
+                if (carManufacturer.value && insuranceCompany.value && loanCar.value) {
+                    selectedManufacturer.textContent = carManufacturer.options[carManufacturer.selectedIndex].text;
+                    selectedInsurance.textContent = insuranceCompany.options[insuranceCompany.selectedIndex].text;
+                    selectedLoanCar.textContent = loanCar.options[loanCar.selectedIndex].text;
+                    extraInfo.style.display = 'block';
+                }
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
