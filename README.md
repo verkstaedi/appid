@@ -1,5 +1,6 @@
 # verkstaedid ÍSAR/K  
 
+b
 
 ## Almenn lýsing:
 isark.is á að leysa þann vanda hjá verkstæðum að standa stanslaust í því að svar símanum um fyrirspurnir gagnvart viðgerðum og verkstæðis tímum.
