@@ -1,6 +1,7 @@
 # verkstaedid ÍSAR/K  
 
 
+
 ## Almenn lýsing:
 isark.is á að leysa þann vanda hjá verkstæðum að standa stanslaust í því að svar símanum um fyrirspurnir gagnvart viðgerðum og verkstæðis tímum.
 Markmið okkar er að einfalda verkstæðis pöntunar kerfi svo að user og verkstæði geti unnið saman á sama stað til að fá tilboð í viðgerðir/ tíma á verkstæði.
