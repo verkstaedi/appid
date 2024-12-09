@@ -1,6 +1,99 @@
+
 <!DOCTYPE html>
 <html lang="is">
 <head>
+    <style>
+
+
+        
+        form {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    
+        /* Label Styling */
+        form label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+    
+        /* Dropdown Styling */
+        form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            font-size: 16px;
+            color: #333;
+        }
+    
+        form select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+    
+        /* Button Styling */
+        form button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .form-check {
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    .form-check-label {
+        font-weight: normal;
+        margin-left: 5px;
+    }
+
+    .form-check-input {
+        width: 18px;
+        height: 18px;
+    }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+    
+            form select {
+                font-size: 14px;
+            }
+    
+            form button {
+                font-size: 14px;
+            }
+        }
+    </style>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>isark.is - Einföldun fyrir verkstæði</title>
@@ -143,164 +236,15 @@ Framleiðandi: <select name="topic" id="topic">
 Gerð: <select name="chapter" id="chapter">
     <option value="" selected="selected">veldu gerð</option>
   </select>
-  <input type="submit" value="Submit">  
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" required>
+    <label class="form-check-label" for="termsCheckbox">
+        Ég þarf lánsbíl
+    </label>
+</div>
 </form>
             <form class="mt-4">
-                <div class="row mb-3">
-                    <!-- Velja bílaframleiðanda -->
-                    <div class="col-md-4">
-                        <label for="carManufacturer" class="form-label">Veldu framleiðanda</label>
-                        <select id="carManufacturer" class="form-select" required>
-                            <option value="" disabled selected>Veldu framleiðanda</option>
-                            <option value="abarth">Abarth</option>
-                            <option value="acura">Acura</option>
-                            <option value="adler">Adler</option>
-                            <option value="alfa-romeo">Alfa Romeo</option>
-                            <option value="alpina">Alpina</option>
-                            <option value="alpine">Alpine</option>
-                            <option value="apex">Apex</option>
-                            <option value="arash">Arash</option>
-                            <option value="aston-martin">Aston Martin</option>
-                            <option value="audi">Audi</option>
-                            <option value="aurus">Aurus</option>
-                            <option value="austin">Austin</option>
-                            <option value="baic">BAIC</option>
-                            <option value="bentley">Bentley</option>
-                            <option value="bmw">BMW</option>
-                            <option value="bollinger">Bollinger</option>
-                            <option value="borgward">Borgward</option>
-                            <option value="brabus">Brabus</option>
-                            <option value="bristol">Bristol</option>
-                            <option value="bugatti">Bugatti</option>
-                            <option value="buick">Buick</option>
-                            <option value="byd">BYD</option>
-                            <option value="cadillac">Cadillac</option>
-                            <option value="caterham">Caterham</option>
-                            <option value="changan">Changan</option>
-                            <option value="chery">Chery</option>
-                            <option value="chevrolet">Chevrolet</option>
-                            <option value="chrysler">Chrysler</option>
-                            <option value="citroen">Citroën</option>
-                            <option value="cupra">Cupra</option>
-                            <option value="dacia">Dacia</option>
-                            <option value="daewoo">Daewoo</option>
-                            <option value="daihatsu">Daihatsu</option>
-                            <option value="datsun">Datsun</option>
-                            <option value="delorean">DeLorean</option>
-                            <option value="dodge">Dodge</option>
-                            <option value="ds-automobiles">DS Automobiles</option>
-                            <option value="faraday-future">Faraday Future</option>
-                            <option value="ferrari">Ferrari</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="fisker">Fisker</option>
-                            <option value="ford">Ford</option>
-                            <option value="genesis">Genesis</option>
-                            <option value="geo">Geo</option>
-                            <option value="gmc">GMC</option>
-                            <option value="great-wall">Great Wall</option>
-                            <option value="hennessey">Hennessey</option>
-                            <option value="honda">Honda</option>
-                            <option value="hongqi">Hongqi</option>
-                            <option value="hummer">Hummer</option>
-                            <option value="hyundai">Hyundai</option>
-                            <option value="infiniti">Infiniti</option>
-                            <option value="isuzu">Isuzu</option>
-                            <option value="jaguar">Jaguar</option>
-                            <option value="jeep">Jeep</option>
-                            <option value="karma">Karma</option>
-                            <option value="kia">Kia</option>
-                            <option value="koenigsegg">Koenigsegg</option>
-                            <option value="lada">Lada</option>
-                            <option value="lamborghini">Lamborghini</option>
-                            <option value="lancia">Lancia</option>
-                            <option value="land-rover">Land Rover</option>
-                            <option value="lexus">Lexus</option>
-                            <option value="lincoln">Lincoln</option>
-                            <option value="lordstown">Lordstown</option>
-                            <option value="lotus">Lotus</option>
-                            <option value="lucid">Lucid</option>
-                            <option value="mahindra">Mahindra</option>
-                            <option value="maruti-suzuki">Maruti Suzuki</option>
-                            <option value="maserati">Maserati</option>
-                            <option value="mazda">Mazda</option>
-                            <option value="mclaren">McLaren</option>
-                            <option value="mercedes">Mercedes-Benz</option>
-                            <option value="mg">MG</option>
-                            <option value="mini">Mini</option>
-                            <option value="mitsubishi">Mitsubishi</option>
-                            <option value="nio">NIO</option>
-                            <option value="nissan">Nissan</option>
-                            <option value="opel">Opel</option>
-                            <option value="pagani">Pagani</option>
-                            <option value="peugeot">Peugeot</option>
-                            <option value="pininfarina">Pininfarina</option>
-                            <option value="plymouth">Plymouth</option>
-                            <option value="polestar">Polestar</option>
-                            <option value="pontiac">Pontiac</option>
-                            <option value="porsche">Porsche</option>
-                            <option value="proton">Proton</option>
-                            <option value="ram">RAM</option>
-                            <option value="renault">Renault</option>
-                            <option value="rezvani">Rezvani</option>
-                            <option value="rimac">Rimac</option>
-                            <option value="rivian">Rivian</option>
-                            <option value="rolls-royce">Rolls-Royce</option>
-                            <option value="saab">Saab</option>
-                            <option value="saturn">Saturn</option>
-                            <option value="scion">Scion</option>
-                            <option value="seat">SEAT</option>
-                            <option value="shelby">Shelby</option>
-                            <option value="skoda">Škoda</option>
-                            <option value="smart">Smart</option>
-                            <option value="ssangyong">SsangYong</option>
-                            <option value="studebaker">Studebaker</option>
-                            <option value="subaru">Subaru</option>
-                            <option value="suzuki">Suzuki</option>
-                            <option value="tata">Tata</option>
-                            <option value="tesla">Tesla</option>
-                            <option value="toyota">Toyota</option>
-                            <option value="vauxhall">Vauxhall</option>
-                            <option value="volkswagen">Volkswagen</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="wiesmann">Wiesmann</option>
-                            <option value="zenvo">Zenvo</option>
-
-                        </select>
-                    </div>
-
-                    <!-- Velja tryggingarfyrirtæki -->
-                    <div class="col-md-4">
-                        <label for="insuranceCompany" class="form-label">Veldu tryggingarfyrirtæki</label>
-                        <select id="insuranceCompany" class="form-select" required>
-                            <option value="" disabled selected>Veldu tryggingarfyrirtæki</option>
-                            <option value="sjova">Sjóvá</option>
-                            <option value="vis">VÍS</option>
-                            <option value="tm">TM</option>
-                            <option value="vordur">Vörður</option>
-                            <option value="alfasigur">Alfasigur</option>
-                        </select>
-                    </div>
-
-                    <!-- Velja lánsbílamöguleika -->
-                    <div class="col-md-4">
-                        <label for="loanCar" class="form-label">Þarftu lánsbíl?</label>
-                        <select id="loanCar" class="form-select" required>
-                            <option value="" disabled selected>Veldu möguleika</option>
-                            <option value="yes">Já</option>
-                            <option value="no">Nei</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Sýna meira ef allar upplýsingar eru valdar -->
-                <div id="extraInfo" class="mt-4" style="display: none;">
-                    <h4>Frekari upplýsingar</h4>
-                    <p>Þú valdir framleiðanda: <span id="selectedManufacturer"></span></p>
-                    <p>Þú valdir tryggingarfyrirtæki: <span id="selectedInsurance"></span></p>
-                    <p>Þú þarft lánsbíl: <span id="selectedLoanCar"></span></p>
-                </div>
-
-                <!-- Submit hnappur -->
+               
                 <button type="submit" class="btn btn-primary mt-3">Senda</button>
             </form>
         </div>
