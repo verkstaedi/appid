@@ -46,9 +46,11 @@ INSTALLED_APPS = [
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+        'SCOPE': ['profile', 'email', 'openid'],
+        'AUTH_PARAMS': {'access_type': 'online'},
         'APP': {
-            'client_id': '1023563000875-tvlltppagdq8q01a7e4vatmvfnk3rsdb.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'secret': os.getenv('GOOGLE_CLIENT_SECRET'),
             'key': '',
         }
     }
