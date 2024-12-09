@@ -227,15 +227,29 @@
             <h2>Hafðu Samband</h2>
             <p>Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
 <form name="form1" id="form1" action="/action_page.php">
-Tegund ökutækis: <select name="subject" id="subject">
+    <label for="">Tegund ökutækis:</label>
+ <select name="subject" id="subject">
     <option value="" selected="selected">veldu tegund</option>
   </select>
-Framleiðandi: <select name="topic" id="topic">
+  <label for="">Framleiðandi:</label>
+ <select name="topic" id="topic">
     <option value="" selected="selected">veldu framleiðanda</option>
   </select>
-Gerð: <select name="chapter" id="chapter">
+  <label>Gerð:</label>
+ <select name="chapter" id="chapter">
     <option value="" selected="selected">veldu gerð</option>
   </select>
+  <label for="independentDropdown" >Tryggingafélög</label>
+<select name="independentDropdown" id="independentDropdown" >
+<option value="" selected="selected">Veldu tryggingar félag</option>
+<option value="sjova">Sjóvá</option>
+<option value="verna">Verna</option>
+<option value="vordur">Vörður</option>
+<option value="vis">VÍS</option>
+<option value="tm">TM</option>
+<option value="tmi">TMI</option>
+
+</select>
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" required>
     <label class="form-check-label" for="termsCheckbox">
