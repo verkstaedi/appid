@@ -1,401 +1,276 @@
-
 <!DOCTYPE html>
 <html lang="is">
 <head>
-    <style>
-
-
-.upload-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    /* Hide the actual file input */
-    #uploadPicture {
-        display: none;
-    }
-
-    /* Style the custom upload button */
-    .upload-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #007bff;
-        color: white;
-        font-size: 16px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
-        width: 150px; /* Set a width for the button */
-        height: 40px; /* Set a height for the button */
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .upload-button:hover {
-        background-color: #0056b3;
-        transform: scale(1.05);
-    }
-
-    .upload-button:active {
-        background-color: #004085;
-        transform: scale(1);
-    }
-
-    .upload-button span {
-        font-weight: bold;
-    }
-        form {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    
-        form h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-    
-        /* Label Styling */
-        form label {
-            font-weight: bold;
-            margin-bottom: 8px;
-            display: block;
-            color: #555;
-        }
-    
-        /* Dropdown Styling */
-        form select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            font-size: 16px;
-            color: #333;
-        }
-    
-        form select:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-    
-        /* Button Styling */
-        form button {
-            background-color: #007bff;
-            color: #fff;
-            font-size: 16px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-    
-        form button:hover {
-            background-color: #0056b3;
-        }
-        .form-check {
-        margin-top: 10px;
-        text-align: left;
-    }
-
-    .form-check-label {
-        font-weight: normal;
-        margin-left: 5px;
-    }
-
-    .form-check-input {
-        width: 18px;
-        height: 18px;
-    }
-    
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            form {
-                padding: 15px;
-            }
-    
-            form select {
-                font-size: 14px;
-            }
-    
-            form button {
-                font-size: 14px;
-            }
-        }
-    </style>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>isark.is - Einföldun fyrir verkstæði</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var subjectObject = {
-          "Bíll": {
-            "Alfa Romeo": ["Giulia", "Stelvio", "Tonale", "4C", "Giulietta", "MiTo"],
-            "Aston Martin": ["DB11", "Vantage", "DBX", "DBS Superleggera", "Rapide", "Valkyrie"],
-            "Audi": ["A1", "A3", "A4", "A5", "A6", "A7", "A8", "Q2", "Q3", "Q5", "Q7", "Q8", "e-tron", "TT", "R8"],
-            "Bentley": ["Continental GT", "Flying Spur", "Bentayga", "Mulsanne"],
-            "BMW": ["1 Series", "2 Series", "3 Series", "4 Series", "5 Series", "6 Series", "7 Series", "8 Series", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "i3", "i4", "i8", "iX"],
-            "Bugatti": ["Chiron", "Divo", "La Voiture Noire", "Centodieci", "Bolide"],
-            "Citroën": ["C1", "C3", "C3 Aircross", "C4", "C4 Cactus", "C4 SpaceTourer", "C5 Aircross", "Berlingo"],
-            "Dacia": ["Sandero", "Logan", "Duster", "Lodgy", "Dokker", "Spring"],
-            "Ferrari": ["Roma", "Portofino M", "F8 Tributo", "SF90 Stradale", "812 Superfast", "296 GTB"],
-            "Fiat": ["500", "500X", "500L", "Panda", "Tipo", "Punto", "Doblo", "Qubo"],
-            "Jaguar": ["XE", "XF", "XJ", "E-Pace", "F-Pace", "I-Pace", "F-Type"],
-            "Lamborghini": ["Huracán", "Aventador", "Urus", "Sian", "Countach LPI 800-4"],
-            "Land Rover": ["Defender", "Discovery", "Discovery Sport", "Range Rover", "Range Rover Sport", "Range Rover Velar", "Range Rover Evoque"],
-            "Maserati": ["Ghibli", "Quattroporte", "Levante", "MC20", "GranTurismo", "GranCabrio"],
-            "Mercedes-Benz": ["A-Class", "B-Class", "C-Class", "E-Class", "S-Class", "CLA", "CLS", "GLA", "GLB", "GLC", "GLE", "GLS", "G-Class", "EQC", "EQA", "EQB", "EQE", "EQS"],
-            "Mini": ["3-Door Hatch", "5-Door Hatch", "Clubman", "Countryman", "Convertible", "Electric"],
-            "Peugeot": ["108", "208", "2008", "308", "3008", "508", "5008", "Rifter", "Traveller"],
-            "Porsche": ["718 Boxster", "718 Cayman", "911", "Panamera", "Macan", "Cayenne", "Taycan"],
-            "Renault": ["Twingo", "Clio", "Captur", "Megane", "Scenic", "Kadjar", "Koleos", "Zoe", "Talisman"],
-            "Rolls-Royce": ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan"],
-            "SEAT": ["Mii", "Ibiza", "Arona", "Leon", "Ateca", "Tarraco", "Alhambra"],
-            "Škoda": ["Citigo", "Fabia", "Scala", "Octavia", "Superb", "Kamiq", "Karoq", "Kodiaq", "Enyaq"],
-            "Volkswagen": ["up!", "Polo", "Golf", "T-Roc", "T-Cross", "Tiguan", "Touran", "Passat", "Arteon", "Touareg", "ID.3", "ID.4", "ID. Buzz"],
-            "Volvo": ["XC40", "XC60", "XC90", "S60", "S90", "V60", "V90", "C40 Recharge"],
-            "Acura": ["ILX", "TLX", "RDX", "MDX", "NSX"],
-            "Daihatsu": ["Mira", "Tanto", "Move", "Copen", "Rocky"],
-            "Hino": ["Dutro", "Ranger", "Profia", "Poncho", "Liesse II"],
-            "Honda": ["Civic", "Accord", "CR-V", "Fit", "Pilot", "Odyssey", "HR-V", "Insight"],
-            "Infiniti": ["Q50", "Q60", "QX50", "QX60", "QX80"],
-            "Isuzu": ["D-Max", "MU-X", "Elf", "Giga", "Forward"],
-            "Lexus": ["IS", "ES", "GS", "LS", "NX", "RX", "GX", "LX", "LC", "RC"],
-            "Mazda": ["Mazda2", "Mazda3", "Mazda6", "CX-3", "CX-5", "CX-9", "MX-5 Miata"],
-            "Mitsubishi": ["Mirage", "Lancer", "Outlander", "Eclipse Cross", "Pajero", "Triton"],
-            "Nissan": ["Micra", "Sentra", "Altima", "Maxima", "Leaf", "Juke", "Qashqai", "Rogue", "Murano", "Pathfinder", "Armada", "GT-R"],
-            "Subaru": ["Impreza", "Legacy", "Outback", "Forester", "XV Crosstrek", "Ascent", "BRZ"],
-            "Suzuki": ["Alto", "Swift", "Baleno", "Ciaz", "Vitara", "Jimny", "Ertiga"],
-            "Toyota": ["Yaris", "Corolla", "Camry", "Avalon", "C-HR", "RAV4", "Highlander", "4Runner", "Sequoia", "Land Cruiser", "Tacoma", "Tundra", "Prius", "Supra"],
-            "BYD": ["Han", "Tang", "Song", "Qin", "Yuan", "e6", "Dolphin"],
-            "Changan": ["Eado", "Alsvin", "CS35", "CS55", "CS75", "CS95", "UNI-T"],
-            "Chery": ["Arrizo 5", "Arrizo 7", "Tiggo 3", "Tiggo 5", "Tiggo 7", "Tiggo 8"],
-            "Geely": ["Emgrand", "Boyue", "Binrui", "Panda", "Icon", "Preface"],
-            "Great Wall": ["Haval H6", "Haval H9", "Wingle 5", "Wingle 7", "Ora R1", "Tank 300"],
-            "NIO": ["ES6", "ES8", "EC6", "ET7", "ET5"],
-            "Xpeng": ["P7", "G3", "G9", "P5"],
-            "SAIC Motor": ["MG ZS", "MG Hector", "Roewe i5", "Roewe RX5", "Maxus D90"],
-            "FAW Group": ["Bestune T77", "Bestune B70", "Hongqi H9", "Hongqi E-HS9"],
-            "BAIC Group": ["Senova D50", "Senova X25", "BJ40", "BJ80", "Arcfox αT"],
-            "GAC Group": ["Trumpchi GS4", "Trumpchi GA6", "Aion S", "Aion LX"],
-            "Li Auto": ["Li ONE", "L9"],
-            "WM Motor": ["EX5", "W6", "M7"],
-            "Leapmotor": ["T03", "C11", "S01"]
-},
 
-
-
-          "Mótorhjól": {
-            "yamaha": ["Variables", "Strings", "Arrays"],
-            "SQL": ["SELECT", "UPDATE", "DELETE"]
-          }
+    <style>
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
         }
-        window.onload = function() {
-          var subjectSel = document.getElementById("subject");
-          var topicSel = document.getElementById("topic");
-          var chapterSel = document.getElementById("chapter");
-          for (var x in subjectObject) {
-            subjectSel.options[subjectSel.options.length] = new Option(x, x);
-          }
-          subjectSel.onchange = function() {
-            //empty Chapters- and Topics- dropdowns
-            chapterSel.length = 1;
-            topicSel.length = 1;
-            //display correct values
-            for (var y in subjectObject[this.value]) {
-              topicSel.options[topicSel.options.length] = new Option(y, y);
-            }
-          }
-          topicSel.onchange = function() {
-            //empty Chapters dropdown
-            chapterSel.length = 1;
-            //display correct values
-            var z = subjectObject[subjectSel.value][this.value];
-            for (var i = 0; i < z.length; i++) {
-              chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
-            }
-          }
+
+        /* Form Section Styling */
+        .form-section {
+            background-color: #e9ecef; /* Light gray background */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
-        </script>
+
+        /* Form Layout */
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            flex: 1 1 30%;
+            min-width: 250px; /* Minimum size for responsiveness */
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+
+        .form-group textarea {
+            resize: vertical; /* Allow vertical resizing only */
+        }
+
+        /* Upload Button Styling */
+        .custom-upload {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .custom-upload input[type="file"] {
+            display: none;
+        }
+
+        .custom-upload label {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .custom-upload label:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-upload span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .btn-submit {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 20px auto 0;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .checkbox-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 5px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 40px;
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 1 100%; /* Full width for smaller screens */
+            }
+
+            .custom-upload {
+                flex-direction: column; /* Stack file upload on smaller screens */
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="nav-link" href="{% url 'index' %}">isark.is</a>
+            <a class="navbar-brand" href="#">isark.is</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Innskráning</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Nýskráning</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Hafa Samband</a> <!-- Add Contact Page -->
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Innskráning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Nýskráning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Hafa Samband</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <!-- Header -->
-    <header class="bg-primary text-white py-4">
-        <div class="container text-center">
+    <header class="bg-primary text-white text-center py-4">
+        <div class="container">
             <h1>isark.is</h1>
             <p>Ein leið til að leysa fyrirspurnir og verkstæðistímana á einfaldan hátt.</p>
         </div>
     </header>
+
     <!-- Form Section -->
     <section class="py-5">
-        <div class="container text-center">
-            <h2>Hafðu Samband</h2>
-            <p>Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
-<form name="form1" id="form1" >
-    <label for="">Tegund ökutækis:</label>
- <select name="subject" id="subject"required>
-    <option value="" selected="selected">veldu tegund</option>
-  </select>
-  <label for="">Framleiðandi:</label>
- <select name="topic" id="topic"required>
-    <option value="" selected="selected">veldu framleiðanda</option>
-  </select>
-  <label>Gerð:</label>
- <select name="chapter" id="chapter"required>
-    <option value="" selected="selected">veldu gerð</option>
-  </select>
-  <label for="independentDropdown" >Tryggingafélög</label>
-<select name="independentDropdown" id="independentDropdown" >
-<option value="" selected="selected">Veldu tryggingar félag</option>
-<option value="sjova">Sjóvá</option>
-<option value="verna">Verna</option>
-<option value="vordur">Vörður</option>
-<option value="vis">VÍS</option>
-<option value="tm">TM</option>
-<option value="tmi">TMI</option>
-
-</select>
-        <!-- Name -->
-        <div class="mb-3">
-            <label for="name" class="form-label">Nafn</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Sláðu inn fullt nafn" required>
-        </div>
-
-        <!-- Phone Number -->
-        <div class="mb-3">
-            <label for="phone" class="form-label">Símanúmer</label>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Sláðu inn símanúmer (t.d. 1234567)" pattern="[0-9]{7}" required>
-            <small class="text-muted">Símanúmer þarf að vera 7 tölustafir.</small>
-        </div>
-
-        <!-- Kennitala -->
-<div class="mb-3">
-    <label for="kennitala" class="form-label">Kennitala</label>
-    <input type="text" id="kennitala" name="kennitala" class="form-control" 
-           placeholder="Sláðu inn kennitölu (t.d. 123456-7890 eða 1234567890)" 
-           pattern="[0-9]{6}-?[0-9]{4}" 
-           required>
-    <small class="text-muted">Kennitala má vera með eða án bandstriks (t.d. 123456-7890 eða 1234567890).</small>
-</div>
-
-
-        <!-- Email -->
-        <div class="mb-3">
-            <label for="email" class="form-label">Netfang</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Sláðu inn netfang" required>
-            <small class="text-muted">Dæmi: notandi@dæmi.is</small>
-        </div>
-
-        
-<div class="form-container">
-    <!-- Other Form Elements -->
-    <label for="description" class="form-label">Lýsing á tjóni passaðu að lýsa tjóninu vel</label>
-    <textarea id="description" name="description" class="form-control" rows="4" minlength="50" placeholder="Sláðu inn lýsingu hér..." required></textarea>
-</div>
-<!-- File Upload -->
-<label for="uploadPicture" class="form-label" style="display: block;">Hlaða upp myndum (minnst 3 myndir)</label>
-<div class="upload-container">
-    <input type="file" id="uploadPicture" name="uploadPicture[]" class="form-control" accept="image/*" multiple required>
-    <label for="uploadPicture" class="upload-button">
-        <span>Velja myndir</span>
-    </label>
-    <small class="text-muted">Veldu að minnsta kosti 3 myndir.</small>
-</div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" >
-    <label class="form-check-label" for="termsCheckbox">
-        Ég þarf lánsbíl
-    </label>
-</div>
-<button type="submit" >Senda</button>
-</form>
-            
-        </div>
-    </section>  
-
-    <!-- About Section -->
-    <section class="py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2>Um Fyrirtækið</h2>
-                    <p>isark.is er nafnið á fyrirtækinu sem er hannað til að einfalda samskipti milli verkstæða og viðskiptavina. Við leysum þann vanda að verkstæði þurfa að eyða tíma í að svara símanum með því að bjóða upp á skilvirkt kerfi til fyrirspurna, tilboða og verkstæðistíma.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/500x300" alt="Einföld verkstæðislausn" class="img-fluid rounded">
-                </div>
+            <div class="form-section">
+                <h2 class="text-center">Hafðu Samband</h2>
+                <p class="text-center">Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
+
+                <form name="form1" id="form1" enctype="multipart/form-data" method="post">
+                    <div class="form-container">
+                        <!-- Dropdowns -->
+                        <div class="form-group">
+                            <label for="subject">Tegund ökutækis:</label>
+                            <select name="subject" id="subject" required>
+                                <option value="" selected>Veldu tegund</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="topic">Framleiðandi:</label>
+                            <select name="topic" id="topic" required>
+                                <option value="" selected>Veldu framleiðanda</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chapter">Gerð:</label>
+                            <select name="chapter" id="chapter" required>
+                                <option value="" selected>Veldu gerð</option>
+                            </select>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nafn:</label>
+                            <input type="text" id="name" name="name" placeholder="Sláðu inn fullt nafn" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phone">Símanúmer:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Sláðu inn símanúmer" pattern="[0-9]{7}" required>
+                        </div>
+
+                        <!-- Kennitala -->
+                        <div class="form-group">
+                            <label for="kennitala">Kennitala:</label>
+                            <input type="text" id="kennitala" name="kennitala" placeholder="Sláðu inn kennitölu (t.d. 123456-7890)" pattern="[0-9]{6}-?[0-9]{4}" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Netfang:</label>
+                            <input type="email" id="email" name="email" placeholder="Sláðu inn netfang" required>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Lýsing:</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Sláðu inn lýsingu hér..." minlength="50" required></textarea>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="form-group custom-upload">
+                            <input type="file" id="uploadPicture" name="uploadPicture[]" accept="image/*" multiple required>
+                            <label for="uploadPicture">Velja myndir</label>
+                            <span>Veldu að minnsta kosti 3 myndir.</span>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
+                        <label for="termsCheckbox">Ég þarf lánsbíl</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Senda</button>
+                </form>
             </div>
         </div>
     </section>
 
-    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>Um Fyrirtækið</h2>
+            <p>
+                isark.is er nafnið á fyrirtækinu sem er hannað til að einfalda samskipti milli verkstæða og viðskiptavina.
+                Við leysum þann vanda að verkstæði þurfa að eyða tíma í að svara símanum með því að bjóða upp á skilvirkt kerfi 
+                til fyrirspurna, tilboða og verkstæðistíma.
+            </p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
         <p class="mb-0">© 2024 isark.is - Öll réttindi áskilin.</p>
-        <a href="hafa-samband.html" class="text-white text-decoration-underline">Hafa samband</a>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        const carManufacturer = document.getElementById('carManufacturer');
-        const insuranceCompany = document.getElementById('insuranceCompany');
-        const loanCar = document.getElementById('loanCar');
-        const extraInfo = document.getElementById('extraInfo');
-
-        const selectedManufacturer = document.getElementById('selectedManufacturer');
-        const selectedInsurance = document.getElementById('selectedInsurance');
-        const selectedLoanCar = document.getElementById('selectedLoanCar');
-
-        [carManufacturer, insuranceCompany, loanCar].forEach(select => {
-            select.addEventListener('change', () => {
-                if (carManufacturer.value && insuranceCompany.value && loanCar.value) {
-                    selectedManufacturer.textContent = carManufacturer.options[carManufacturer.selectedIndex].text;
-                    selectedInsurance.textContent = insuranceCompany.options[insuranceCompany.selectedIndex].text;
-                    selectedLoanCar.textContent = loanCar.options[loanCar.selectedIndex].text;
-                    extraInfo.style.display = 'block';
-                }
-            });
-        });
-    </script>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
