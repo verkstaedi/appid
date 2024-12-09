@@ -5,7 +5,48 @@
     <style>
 
 
-        
+.upload-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Hide the actual file input */
+    #uploadPicture {
+        display: none;
+    }
+
+    /* Style the custom upload button */
+    .upload-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        width: 150px; /* Set a width for the button */
+        height: 40px; /* Set a height for the button */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .upload-button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    .upload-button:active {
+        background-color: #004085;
+        transform: scale(1);
+    }
+
+    .upload-button span {
+        font-weight: bold;
+    }
         form {
             background-color: #f9f9f9;
             border: 1px solid #ddd;
@@ -226,17 +267,17 @@
         <div class="container text-center">
             <h2>Hafðu Samband</h2>
             <p>Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
-<form name="form1" id="form1" action="/action_page.php">
+<form name="form1" id="form1" >
     <label for="">Tegund ökutækis:</label>
- <select name="subject" id="subject">
+ <select name="subject" id="subject"required>
     <option value="" selected="selected">veldu tegund</option>
   </select>
   <label for="">Framleiðandi:</label>
- <select name="topic" id="topic">
+ <select name="topic" id="topic"required>
     <option value="" selected="selected">veldu framleiðanda</option>
   </select>
   <label>Gerð:</label>
- <select name="chapter" id="chapter">
+ <select name="chapter" id="chapter"required>
     <option value="" selected="selected">veldu gerð</option>
   </select>
   <label for="independentDropdown" >Tryggingafélög</label>
@@ -250,17 +291,61 @@
 <option value="tmi">TMI</option>
 
 </select>
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Nafn</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Sláðu inn fullt nafn" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label for="phone" class="form-label">Símanúmer</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Sláðu inn símanúmer (t.d. 1234567)" pattern="[0-9]{7}" required>
+            <small class="text-muted">Símanúmer þarf að vera 7 tölustafir.</small>
+        </div>
+
+        <!-- Kennitala -->
+<div class="mb-3">
+    <label for="kennitala" class="form-label">Kennitala</label>
+    <input type="text" id="kennitala" name="kennitala" class="form-control" 
+           placeholder="Sláðu inn kennitölu (t.d. 123456-7890 eða 1234567890)" 
+           pattern="[0-9]{6}-?[0-9]{4}" 
+           required>
+    <small class="text-muted">Kennitala má vera með eða án bandstriks (t.d. 123456-7890 eða 1234567890).</small>
+</div>
+
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Netfang</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Sláðu inn netfang" required>
+            <small class="text-muted">Dæmi: notandi@dæmi.is</small>
+        </div>
+
+        
+<div class="form-container">
+    <!-- Other Form Elements -->
+    <label for="description" class="form-label">Lýsing á tjóni passaðu að lýsa tjóninu vel</label>
+    <textarea id="description" name="description" class="form-control" rows="4" minlength="50" placeholder="Sláðu inn lýsingu hér..." required></textarea>
+</div>
+<!-- File Upload -->
+<label for="uploadPicture" class="form-label" style="display: block;">Hlaða upp myndum (minnst 3 myndir)</label>
+<div class="upload-container">
+    <input type="file" id="uploadPicture" name="uploadPicture[]" class="form-control" accept="image/*" multiple required>
+    <label for="uploadPicture" class="upload-button">
+        <span>Velja myndir</span>
+    </label>
+    <small class="text-muted">Veldu að minnsta kosti 3 myndir.</small>
+</div>
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" required>
+    <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" >
     <label class="form-check-label" for="termsCheckbox">
         Ég þarf lánsbíl
     </label>
 </div>
+<button type="submit" >Senda</button>
 </form>
-            <form class="mt-4">
-               
-                <button type="submit" class="btn btn-primary mt-3">Senda</button>
-            </form>
+            
         </div>
     </section>  
 
