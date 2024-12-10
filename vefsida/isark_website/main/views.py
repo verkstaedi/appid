@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from .forms import NotendurForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -14,7 +15,14 @@ def login_view(request):
     return render(request, 'main/login.html')
 
 def index(request):
-    return render(request, 'main/index.html')
+    if request.method == 'POST':
+        form = NotendurForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = NotendurForm()
+    return render(request, 'main/index.html', {'form': form})
 
 def register_view(request):
     return render(request, 'main/register.html')
@@ -22,6 +30,12 @@ def register_view(request):
 def contact(request):
     return render(request, 'main/hafa-samband.html')
 
-def custom_logout_view(request):
-    logout(request)
-    return redirect('index')
+def form_submit(request):
+    if request.method == 'POST':
+        form = NotendurForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = NotendurForm()
+    return render(request, 'main/form_submit.html', {'form': form})

@@ -7,4 +7,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('hafa-samband/', views.contact, name='contact'),
     path('accounts/', include('allauth.urls')),
+    path('form-submit/', views.form_submit, name='form_submit'),
 ]
