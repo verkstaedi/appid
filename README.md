@@ -21,4 +21,20 @@ Jónas er maður sem á sitt eigið verkstæði en það virkar ekki mjög vel o
 við munum nota Django vegna það er skrifað í python sem mun gera vefsíðugerð auðveldari fyrir okkur, notar MVC til að aðskilja gagnaskipulag og viðmót og létt tenging við gagnagrunna Django er gott fyrir frontend tækni og tengist react og vue.js. styður líka MySQL og SQLite. Django getur gert þróun hraðari þar sem það kemur með mörgum innbygðum eiginleikum eins og notendaskráningu og innskráningu sem spara tíma. Django er líka með stórt samfélag svo það er hægt að finna mikið af úrræðum og stuðningi við þróun. við munum líka not htmx til að láta síðuna lýta betur út og fyrir client validation.
 
 api sem við notum er frá [samgöngustofu](https://island.is/s/samgongustofa).
-    
+
+
+### Höfundar: 
+Ísar, Ísar og Ísak
+### Áfanga info:
+VEFÞ3VÞ05DU-Hát Vefforritun II
+Tölvubraut
+Tækniskólinn
+
+### Host: 
+Local Github
+
+### Info: 
+
+Django fyrir html stuff
+Bootstrap fyrir CSS stuff
+SQLite fyrir Database stuff
