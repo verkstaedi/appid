@@ -286,26 +286,27 @@
                 <h2 class="text-center">Hafðu Samband</h2>
                 <p class="text-center">Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
 
-                <form name="form1" id="form1" enctype="multipart/form-data" method="post">
+                <form name="form1" id="form1" enctype="multipart/form-data" method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
                     <div class="form-container">
                         <!-- Dropdowns -->
                         <div class="form-group">
                             <label for="subject">Tegund ökutækis:</label>
-                            <select name="subject" id="subject" required>
+                            <select name="tegund_okutaekis" id="subject" required>
                                 <option value="" selected>Veldu tegund</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="topic">Framleiðandi:</label>
-                            <select name="topic" id="topic" required>
+                            <select name="framleidandi" id="topic" required>
                                 <option value="" selected>Veldu framleiðanda</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="chapter">Gerð:</label>
-                            <select name="chapter" id="chapter" required>
+                            <select name="gerd" id="chapter" required>
                                 <option value="" selected>Veldu gerð</option>
                             </select>
                         </div>
@@ -313,13 +314,13 @@
                         <!-- Name -->
                         <div class="form-group">
                             <label for="name">Nafn:</label>
-                            <input type="text" id="name" name="name" placeholder="Sláðu inn fullt nafn" required>
+                            <input type="text" id="name" name="nafn" placeholder="Sláðu inn fullt nafn" required>
                         </div>
 
                         <!-- Phone -->
                         <div class="form-group">
                             <label for="phone">Símanúmer:</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Sláðu inn símanúmer" pattern="[0-9]{7}" required>
+                            <input type="tel" id="phone" name="simanumer" placeholder="Sláðu inn símanúmer" pattern="[0-9]{7}" required>
                         </div>
 
                         <!-- Kennitala -->
@@ -337,7 +338,7 @@
                         <!-- Description -->
                         <div class="form-group">
                             <label for="description">Lýsing:</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Sláðu inn lýsingu hér..." minlength="50" required></textarea>
+                            <textarea id="description" name="lysing" rows="4" placeholder="Sláðu inn lýsingu hér..." minlength="50" required></textarea>
                         </div>
 
                         <!-- File Upload -->
@@ -354,7 +355,7 @@
                         <label for="termsCheckbox">Ég þarf lánsbíl</label>
                     </div>
 
-                    <button type="submit" class="btn-submit" onclick="window.location.reload()">Senda</button>
+                    <button type="submit" class="btn-submit">Senda</button>
 
                 </form>
             </div>

@@ -5,4 +5,4 @@ from .models import Notendur
 class NotendurForm(forms.ModelForm):
     class Meta:
         model = Notendur
-        fields = ['nafn', 'bilnumer', 'vandamal', 'stadsetning', 'buid_til', 'kennitala', 'simanumer']
+        fields = ['tegund_okutaekis', 'framleidandi', 'gerd', 'nafn', 'simanumer', 'kennitala', 'email', 'lysing']
