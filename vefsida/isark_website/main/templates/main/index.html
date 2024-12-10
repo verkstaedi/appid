@@ -265,6 +265,11 @@
             </div>
         </div>
     </nav>
+    {% if user.is_authenticated %}
+        <p>Halló {{ user.username }}!</p>
+    {% else %}
+        <p>Velkomin gestur!</p>
+    {% endif %}
 
     <!-- Header -->
     <header class="bg-primary text-white text-center py-4">
