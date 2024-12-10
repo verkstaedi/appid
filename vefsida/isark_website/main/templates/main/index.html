@@ -246,7 +246,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">isark.is</a>
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="https://i.imgur.com/Qk4Vz5H.png" alt="Logo" width="100">isark.is</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -265,17 +265,16 @@
             </div>
         </div>
     </nav>
-    {% if user.is_authenticated %}
-        <p>Halló {{ user.username }}!</p>
-    {% else %}
-        <p>Velkomin gestur!</p>
-    {% endif %}
-
     <!-- Header -->
     <header class="bg-primary text-white text-center py-4">
         <div class="container">
+            {% if user.is_authenticated %}
+                <h4>Halló {{ user.username }}!</h4>
+            {% else %}
+                <h4>Velkomin gestur!</h4>
+            {% endif %}
             <h1>isark.is</h1>
-            <p>Ein leið til að leysa fyrirspurnir og verkstæðistímana á einfaldan hátt.</p>
+            <p>Rétta leiðinn til að leysa fyrirspurnir og verkstæðistímana á einfaldan hátt.</p>
         </div>
     </header>
 
@@ -284,7 +283,7 @@
         <div class="container">
             <div class="form-section">
                 <h2 class="text-center">Hafðu Samband</h2>
-                <p class="text-center">Veldu bíla-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
+                <p class="text-center">Veldu ökutækis-, tryggingar- og lánsmöguleika svo við getum þjónustað þig betur.</p>
 
                 <form name="form1" id="form1" enctype="multipart/form-data" method="post" action="{% url 'index' %}">
                     {% csrf_token %}
